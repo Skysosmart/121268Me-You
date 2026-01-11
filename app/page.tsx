@@ -31,10 +31,8 @@ export default function Home() {
     const now = new Date()
     const isBeforeDate = now < TARGET_DATE
     
-    // TESTING: Disable countdown to test password protection
     // Show full-screen countdown if before the date
-    setShowFullScreenCountdown(false) // Temporarily disabled for password testing
-    // setShowFullScreenCountdown(isBeforeDate) // Uncomment for production
+    setShowFullScreenCountdown(isBeforeDate)
   }, [])
 
   const handleCountdownComplete = () => {
