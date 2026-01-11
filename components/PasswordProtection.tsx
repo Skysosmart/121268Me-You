@@ -4,7 +4,10 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const PASSWORD = '121225'
-const TARGET_DATE = new Date('2026-01-12T00:00:00') // 12 January 2026
+// TESTING MODE: Temporarily set to yesterday to test password protection
+// CHANGE BACK TO: new Date('2026-01-12T00:00:00') before production
+const TARGET_DATE = new Date(Date.now() - 24 * 60 * 60 * 1000) // Yesterday (for testing)
+// const TARGET_DATE = new Date('2026-01-12T00:00:00') // 12 January 2026 (PRODUCTION)
 
 interface PasswordProtectionProps {
   children: React.ReactNode

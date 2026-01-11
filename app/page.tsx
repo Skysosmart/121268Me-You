@@ -14,6 +14,8 @@ import PasswordProtection from '@/components/PasswordProtection'
 import FullScreenCountdown from '@/components/FullScreenCountdown'
 import { useBackgroundPhoto } from '@/components/BackgroundPhotoManager'
 
+// TESTING MODE: Temporarily disabled countdown to test password protection
+// CHANGE BACK TO: new Date('2026-01-12T00:00:00') before production
 const TARGET_DATE = new Date('2026-01-12T00:00:00') // 12 January 2026
 
 export default function Home() {
@@ -25,8 +27,10 @@ export default function Home() {
     const now = new Date()
     const isBeforeDate = now < TARGET_DATE
     
+    // TESTING: Disable countdown to test password protection
     // Show full-screen countdown if before the date
-    setShowFullScreenCountdown(isBeforeDate)
+    setShowFullScreenCountdown(false) // Temporarily disabled for password testing
+    // setShowFullScreenCountdown(isBeforeDate) // Uncomment for production
   }, [])
 
   const handleCountdownComplete = () => {
