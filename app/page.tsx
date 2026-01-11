@@ -30,18 +30,18 @@ export default function Home() {
   }
 
   return (
-    <PasswordProtection>
-      <main className="relative">
-        {/* Full-screen countdown - shows first, always */}
-        {showFullScreenCountdown && (
-          <FullScreenCountdown 
-            onCountdownComplete={handleCountdownComplete}
-          />
-        )}
+    <>
+      {/* Full-screen countdown - shows first, always (outside PasswordProtection) */}
+      {showFullScreenCountdown && (
+        <FullScreenCountdown 
+          onCountdownComplete={handleCountdownComplete}
+        />
+      )}
 
-        {/* Main website content - hidden when full-screen countdown is active */}
-        {!showFullScreenCountdown && (
-          <>
+      {/* Password Protection and Main content - only show after countdown completes */}
+      {!showFullScreenCountdown && (
+        <PasswordProtection>
+          <main className="relative">
             {/* Floating background images */}
             <FloatingBackground 
               images={floatingImages} 
@@ -57,10 +57,10 @@ export default function Home() {
             <CountdownSection />
             <FinalLovePage />
             <MusicPlayer />
-          </>
-        )}
-      </main>
-    </PasswordProtection>
+          </main>
+        </PasswordProtection>
+      )}
+    </>
   )
 }
 

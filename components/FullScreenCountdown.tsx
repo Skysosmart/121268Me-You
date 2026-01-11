@@ -53,7 +53,7 @@ export default function FullScreenCountdown({ onCountdownComplete }: FullScreenC
 
   return (
     <div 
-      className="fixed inset-0 z-[9998] flex items-center justify-center bg-gradient-romantic"
+      className="fixed inset-0 z-[10000] flex items-center justify-center bg-gradient-romantic"
     >
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]" />
