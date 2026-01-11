@@ -89,20 +89,35 @@ export default function FloatingBackground({
     setFloatingImages(generateFloatingImages)
   }, [generateFloatingImages])
 
+  // Don't render if no images
+  if (floatingImages.length === 0) {
+    return null
+  }
+
   return (
     <div
-      className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden"
+      className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
       aria-hidden="true"
+      style={{ 
+        isolation: 'isolate',
+        zIndex: -1,
+      }}
     >
-      {/* Gradient overlay - soft pink to sky blue */}
-      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-200/40 via-sky-blue-100/30 to-romantic-pink-100/40" />
+      {/* Base gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-100/50 via-sky-blue-50/40 to-romantic-pink-50/50" />
       
-      {/* Floating images container with blur */}
-      <div className="absolute inset-0 backdrop-blur-[6px]">
+      {/* Floating images container */}
+      <div className="absolute inset-0">
         {floatingImages.map((image) => (
           <FloatingImageItem key={image.id} image={image} />
         ))}
       </div>
+      
+      {/* Light blur overlay for dreamy effect */}
+      <div className="absolute inset-0 backdrop-blur-[3px] opacity-60" />
+      
+      {/* Gradient overlay - soft pink to sky blue */}
+      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-200/25 via-sky-blue-100/15 to-romantic-pink-100/25" />
     </div>
   )
 }

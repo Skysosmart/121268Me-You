@@ -67,17 +67,8 @@ export default function HeroSection() {
   return (
     <section 
       className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden bg-gradient-romantic"
-      style={{
-        backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
     >
-      {/* Overlay for better text readability when using background image */}
-      {backgroundImage && (
-        <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]" />
-      )}
+      {/* Background removed - using FloatingBackground component instead */}
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         {hearts.map((heart, i) => (
