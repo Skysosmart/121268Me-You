@@ -1,85 +1,14 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
-import { useBackgroundPhoto } from '@/components/BackgroundPhotoManager'
-
-const Heart = ({ delay, x, duration }: { delay: number; x: number; duration: number }) => (
-  <motion.div
-    className="absolute text-romantic-pink-400 text-2xl"
-    initial={{ y: '100vh', x, opacity: 0 }}
-    animate={{ y: '-10vh', opacity: [0, 1, 1, 0] }}
-    transition={{
-      duration,
-      delay,
-      repeat: Infinity,
-      ease: 'linear',
-    }}
-  >
-    ❤️
-  </motion.div>
-)
-
-const IceCrystal = ({ delay, x, duration }: { delay: number; x: number; duration: number }) => (
-  <motion.div
-    className="absolute w-3 h-3 bg-sky-blue-200 opacity-60"
-    style={{
-      clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
-    }}
-    initial={{ y: '100vh', x, opacity: 0, rotate: 0 }}
-    animate={{ 
-      y: '-10vh', 
-      opacity: [0, 0.6, 0.6, 0],
-      rotate: 360
-    }}
-    transition={{
-      duration,
-      delay,
-      repeat: Infinity,
-      ease: 'linear',
-    }}
-  />
-)
 
 export default function HeroSection() {
-  const [hearts, setHearts] = useState<Array<{ delay: number; x: number; duration: number }>>([])
-  const [crystals, setCrystals] = useState<Array<{ delay: number; x: number; duration: number }>>([])
-  const backgroundImage = useBackgroundPhoto()
-
-  useEffect(() => {
-    // Generate random hearts
-    const heartArray = Array.from({ length: 15 }, () => ({
-      delay: Math.random() * 5,
-      x: Math.random() * 100,
-      duration: 3 + Math.random() * 4,
-    }))
-    setHearts(heartArray)
-
-    // Generate random crystals
-    const crystalArray = Array.from({ length: 20 }, () => ({
-      delay: Math.random() * 5,
-      x: Math.random() * 100,
-      duration: 4 + Math.random() * 5,
-    }))
-    setCrystals(crystalArray)
-  }, [])
 
   return (
     <section 
       className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden"
       style={{ background: 'transparent' }}
     >
-      {/* Background removed - using FloatingBackground component instead */}
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {hearts.map((heart, i) => (
-          <Heart key={`heart-${i}`} {...heart} />
-        ))}
-        {crystals.map((crystal, i) => (
-          <IceCrystal key={`crystal-${i}`} {...crystal} />
-        ))}
-      </div>
-
       {/* Main content */}
       <motion.div
         className="relative z-10 text-center"
