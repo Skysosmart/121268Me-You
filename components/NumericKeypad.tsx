@@ -17,7 +17,7 @@ export default function NumericKeypad({ onNumberClick, onDelete, onClear }: Nume
   ]
 
   return (
-    <div className="grid grid-cols-3 gap-2 w-full max-w-xs mx-auto">
+    <div className="grid grid-cols-3 gap-1.5 w-full max-w-[280px] mx-auto">
       {numbers.map((row, rowIndex) =>
         row.map((item, colIndex) => {
           if (item === '') {
@@ -30,14 +30,14 @@ export default function NumericKeypad({ onNumberClick, onDelete, onClear }: Nume
                 key="delete"
                 type="button"
                 onClick={onDelete}
-                className="aspect-square rounded-xl bg-gradient-to-br from-romantic-pink-400 to-romantic-pink-500 text-white font-bold text-lg shadow-lg hover:shadow-xl transition-all flex items-center justify-center"
+                className="aspect-square rounded-lg bg-gradient-to-br from-romantic-pink-400 to-romantic-pink-500 text-white font-bold text-base shadow-lg hover:shadow-xl transition-all flex items-center justify-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 animate={{
                   boxShadow: [
-                    '0 8px 20px rgba(236, 72, 153, 0.3)',
-                    '0 12px 30px rgba(236, 72, 153, 0.5)',
-                    '0 8px 20px rgba(236, 72, 153, 0.3)',
+                    '0 6px 15px rgba(236, 72, 153, 0.3)',
+                    '0 10px 25px rgba(236, 72, 153, 0.5)',
+                    '0 6px 15px rgba(236, 72, 153, 0.3)',
                   ],
                 }}
                 transition={{
@@ -56,10 +56,10 @@ export default function NumericKeypad({ onNumberClick, onDelete, onClear }: Nume
               key={item}
               type="button"
               onClick={() => onNumberClick(item)}
-              className="aspect-square rounded-xl bg-gradient-to-br from-white to-romantic-pink-50 text-romantic-pink-600 font-bold text-xl shadow-lg hover:shadow-xl border-2 border-romantic-pink-200 hover:border-romantic-pink-400 transition-all flex items-center justify-center"
+              className="aspect-square rounded-lg bg-gradient-to-br from-white to-romantic-pink-50 text-romantic-pink-600 font-bold text-lg shadow-lg hover:shadow-xl border-2 border-romantic-pink-200 hover:border-romantic-pink-400 transition-all flex items-center justify-center"
               whileHover={{ 
-                scale: 1.08,
-                rotate: [0, -3, 3, 0],
+                scale: 1.06,
+                rotate: [0, -2, 2, 0],
               }}
               whileTap={{ scale: 0.92 }}
               transition={{ duration: 0.2 }}

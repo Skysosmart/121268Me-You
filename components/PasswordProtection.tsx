@@ -70,34 +70,34 @@ export default function PasswordProtection({ children }: PasswordProtectionProps
         exit={{ opacity: 0 }}
       >
         <motion.div
-          className="glassmorphism rounded-3xl p-8 md:p-12 max-w-md w-full shadow-2xl"
+          className="glassmorphism rounded-2xl p-4 md:p-6 max-w-sm w-full shadow-2xl overflow-y-auto max-h-[90vh]"
           initial={{ scale: 0.8, opacity: 0, y: 50 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
           <motion.div
-            className="text-center mb-8"
+            className="text-center mb-4 md:mb-6"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <div className="text-6xl mb-4">🔒</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-romantic-pink-600 mb-2 text-glow">
+            <div className="text-4xl md:text-5xl mb-2">🔒</div>
+            <h2 className="text-xl md:text-2xl font-bold text-romantic-pink-600 mb-1 text-glow">
               Welcome to Our Anniversary
             </h2>
-            <p className="text-gray-300">
-              Please enter the password to continue
+            <p className="text-gray-300 text-sm">
+              Please enter the password
             </p>
           </motion.div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
             {/* Password Display */}
-            <div className="mb-6">
-              <div className="flex justify-center gap-1.5 mb-4">
+            <div className="mb-4">
+              <div className="flex justify-center gap-1 mb-3">
                 {[0, 1, 2, 3, 4, 5].map((index) => (
                   <motion.div
                     key={index}
-                    className={`w-10 h-10 md:w-12 md:h-12 rounded-lg border-2 flex items-center justify-center text-lg font-bold transition-all ${
+                    className={`w-8 h-8 md:w-10 md:h-10 rounded-lg border-2 flex items-center justify-center text-sm md:text-base font-bold transition-all ${
                       index < password.length
                         ? 'bg-gradient-romantic border-romantic-pink-500 text-white shadow-lg'
                         : 'bg-white/50 border-romantic-pink-200 text-romantic-pink-300'
@@ -147,7 +147,7 @@ export default function PasswordProtection({ children }: PasswordProtectionProps
             <motion.button
               type="submit"
               disabled={password.length !== 6}
-              className={`w-full px-6 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all text-lg font-semibold ${
+              className={`w-full px-4 py-3 rounded-xl shadow-xl hover:shadow-2xl transition-all text-base font-semibold ${
                 password.length === 6
                   ? 'bg-gradient-romantic text-white'
                   : 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -160,7 +160,7 @@ export default function PasswordProtection({ children }: PasswordProtectionProps
           </form>
 
           <motion.div
-            className="mt-6 text-center text-sm text-gray-400"
+            className="mt-4 text-center text-xs text-gray-400"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
