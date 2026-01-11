@@ -7,12 +7,12 @@
   "functions": {
     "app/**": {
       "maxDuration": 30,
-      "memory": 3008
+      "memory": 1024
     }
   },
   "build": {
     "env": {
-      "NODE_OPTIONS": "--max-old-space-size=4096"
+      "NODE_OPTIONS": "--max-old-space-size=2048"
     }
   }
 }
