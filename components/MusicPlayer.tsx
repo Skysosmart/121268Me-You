@@ -4,16 +4,32 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function MusicPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true) // Start playing by default
   const [isVisible, setIsVisible] = useState(true)
   const audioRef = useRef<HTMLAudioElement>(null)
 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.3
+      // Try to autoplay on mount
+      const tryAutoplay = async () => {
+        try {
+          await audioRef.current?.play()
+          setIsPlaying(true)
+        } catch (error) {
+          // Autoplay blocked, user will need to interact
+          setIsPlaying(false)
+        }
+      }
+      tryAutoplay()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.play().catch(() => {
-          // Autoplay might be blocked, user will need to interact
+          setIsPlaying(false)
         })
       } else {
         audioRef.current.pause()
@@ -37,7 +53,8 @@ export default function MusicPlayer() {
         ref={audioRef}
         loop
         preload="auto"
-        muted={!isPlaying}
+        autoPlay
+        muted={false}
       >
         {/* Love Story - Taylor Swift (Lo-fi) */}
         {/* Place your "love-story-lofi.mp3" file in the /public folder */}

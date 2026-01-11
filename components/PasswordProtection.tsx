@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import NumericKeypad from './NumericKeypad'
 
 const PASSWORD = '121225'
 // TESTING MODE: Temporarily set to yesterday to test password protection
@@ -90,21 +91,32 @@ export default function PasswordProtection({ children }: PasswordProtectionProps
           </motion.div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value)
-                  setError('')
-                }}
-                placeholder="Enter password"
-                className="w-full px-6 py-4 rounded-2xl border-2 border-romantic-pink-300 focus:border-romantic-pink-500 focus:outline-none text-lg bg-white/50 backdrop-blur-sm text-center"
-                autoFocus
-              />
+            {/* Password Display */}
+            <div className="mb-6">
+              <div className="flex justify-center gap-2 mb-4">
+                {[0, 1, 2, 3, 4, 5].map((index) => (
+                  <motion.div
+                    key={index}
+                    className={`w-12 h-12 md:w-14 md:h-14 rounded-xl border-2 flex items-center justify-center text-xl font-bold transition-all ${
+                      index < password.length
+                        ? 'bg-gradient-romantic border-romantic-pink-500 text-white shadow-lg'
+                        : 'bg-white/50 border-romantic-pink-200 text-romantic-pink-300'
+                    }`}
+                    animate={{
+                      scale: index < password.length ? [1, 1.1, 1] : 1,
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      delay: index < password.length ? 0 : 0,
+                    }}
+                  >
+                    {index < password.length ? '●' : ''}
+                  </motion.div>
+                ))}
+              </div>
               {error && (
                 <motion.p
-                  className="mt-2 text-red-500 text-sm text-center"
+                  className="text-red-500 text-sm text-center"
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
@@ -113,11 +125,35 @@ export default function PasswordProtection({ children }: PasswordProtectionProps
               )}
             </div>
 
+            {/* Custom Numeric Keypad */}
+            <NumericKeypad
+              onNumberClick={(num) => {
+                if (password.length < 6) {
+                  setPassword(password + num)
+                  setError('')
+                }
+              }}
+              onDelete={() => {
+                setPassword(password.slice(0, -1))
+                setError('')
+              }}
+              onClear={() => {
+                setPassword('')
+                setError('')
+              }}
+            />
+
+            {/* Enter Button */}
             <motion.button
               type="submit"
-              className="w-full px-6 py-4 bg-gradient-romantic text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all text-lg"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              disabled={password.length !== 6}
+              className={`w-full px-6 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all text-lg font-semibold ${
+                password.length === 6
+                  ? 'bg-gradient-romantic text-white'
+                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              }`}
+              whileHover={password.length === 6 ? { scale: 1.02 } : {}}
+              whileTap={password.length === 6 ? { scale: 0.98 } : {}}
             >
               Enter
             </motion.button>
