@@ -53,8 +53,8 @@ export default function FloatingBackground({
       // Random duration (6s to 10s)
       const duration = 6 + Math.random() * 4
       
-      // Random opacity (0.5 to 0.75) - more visible
-      const opacity = 0.5 + Math.random() * 0.25
+      // Random opacity (0.6 to 0.85) - very visible
+      const opacity = 0.6 + Math.random() * 0.25
       
       return {
         id: `floating-${index}-${src}`,
@@ -103,20 +103,20 @@ export default function FloatingBackground({
       }}
     >
       {/* Base gradient background - very light */}
-      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-100/30 via-sky-blue-50/20 to-romantic-pink-50/30" />
+      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-100/20 via-sky-blue-50/10 to-romantic-pink-50/20" />
       
-      {/* Floating images container - images should be visible */}
-      <div className="absolute inset-0" style={{ zIndex: 1 }}>
+      {/* Floating images container - images should be visible and on top */}
+      <div className="absolute inset-0" style={{ zIndex: 10 }}>
         {floatingImages.map((image) => (
           <FloatingImageItem key={image.id} image={image} />
         ))}
       </div>
       
-      {/* Very light blur overlay - not too strong */}
-      <div className="absolute inset-0 backdrop-blur-[2px] opacity-30" style={{ zIndex: 2 }} />
+      {/* Very light blur overlay - behind images */}
+      <div className="absolute inset-0 backdrop-blur-[1px] opacity-20" style={{ zIndex: 5 }} />
       
-      {/* Very light gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-200/10 via-sky-blue-100/5 to-romantic-pink-100/10" style={{ zIndex: 3 }} />
+      {/* Very light gradient overlay - behind images */}
+      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-200/5 via-sky-blue-100/3 to-romantic-pink-100/5" style={{ zIndex: 6 }} />
     </div>
   )
 }
@@ -147,16 +147,16 @@ function FloatingImageItem({ image }: { image: FloatingImage }) {
         transform: `translate(-50%, -50%) rotate(${image.rotation}deg)`,
         willChange: 'transform, opacity', // GPU acceleration hint
       }}
-      animate={floatingAnimation}
-      initial={{ opacity: 0, scale: 0.8 }}
-      whileInView={{ 
+      animate={{
+        ...floatingAnimation,
         opacity: image.opacity,
         scale: 1,
       }}
-      viewport={{ once: true, margin: '-100px' }}
+      initial={{ opacity: 0, scale: 0.8 }}
       transition={{
-        opacity: { duration: 0.6, ease: 'easeOut' },
-        scale: { duration: 0.6, ease: 'easeOut' },
+        opacity: { duration: 0.8, ease: 'easeOut' },
+        scale: { duration: 0.8, ease: 'easeOut' },
+        ...floatingAnimation.transition,
       }}
     >
       {/* Polaroid style frame */}
@@ -194,67 +194,40 @@ function FloatingImageItem({ image }: { image: FloatingImage }) {
 
 // Hook to get background images from the backgrounds folder
 export function useFloatingBackgroundImages() {
-  const [images, setImages] = useState<string[]>([])
+  // Return images directly - no async check needed
+  const allPhotos = [
+    '/backgrounds/IMG_3285.JPG',
+    '/backgrounds/IMG_3287.JPG',
+    '/backgrounds/IMG_3273.JPG',
+    '/backgrounds/IMG_3116.JPG',
+    '/backgrounds/IMG_3115.JPG',
+    '/backgrounds/IMG_3111.JPG',
+    '/backgrounds/IMG_3120.JPG',
+    '/backgrounds/IMG_3122.JPG',
+    '/backgrounds/IMG_3108.JPG',
+    '/backgrounds/IMG_3110.JPG',
+    '/backgrounds/IMG_3103.JPG',
+    '/backgrounds/IMG_3093.JPG',
+    '/backgrounds/IMG_3398.JPG',
+    '/backgrounds/IMG_2428.JPG',
+    '/backgrounds/IMG_2208.JPG',
+    '/backgrounds/IMG_3644.JPG',
+    '/backgrounds/IMG_3645.JPG',
+    '/backgrounds/IMG_3646.JPG',
+    '/backgrounds/IMG_3648.JPG',
+    '/backgrounds/IMG_3649.JPG',
+    '/backgrounds/IMG_3650.JPG',
+    '/backgrounds/IMG_3651.JPG',
+    '/backgrounds/IMG_3741.JPG',
+    '/backgrounds/IMG_3777.JPG',
+    '/backgrounds/IMG_3814.JPG',
+    '/backgrounds/IMG_3816.JPG',
+    '/backgrounds/IMG_5623.JPG',
+    '/backgrounds/IMG_5652.JPG',
+    '/backgrounds/IMG_5759.JPG',
+    '/backgrounds/46857974-B508-45F5-9B1D-74AF02FFBB5C.png',
+  ]
 
-  useEffect(() => {
-    // List of all background photos
-    const allPhotos = [
-      '/backgrounds/IMG_3285.JPG',
-      '/backgrounds/IMG_3287.JPG',
-      '/backgrounds/IMG_3273.JPG',
-      '/backgrounds/IMG_3116.JPG',
-      '/backgrounds/IMG_3115.JPG',
-      '/backgrounds/IMG_3111.JPG',
-      '/backgrounds/IMG_3120.JPG',
-      '/backgrounds/IMG_3122.JPG',
-      '/backgrounds/IMG_3108.JPG',
-      '/backgrounds/IMG_3110.JPG',
-      '/backgrounds/IMG_3103.JPG',
-      '/backgrounds/IMG_3093.JPG',
-      '/backgrounds/IMG_3398.JPG',
-      '/backgrounds/IMG_2428.JPG',
-      '/backgrounds/IMG_2208.JPG',
-      '/backgrounds/IMG_3644.JPG',
-      '/backgrounds/IMG_3645.JPG',
-      '/backgrounds/IMG_3646.JPG',
-      '/backgrounds/IMG_3648.JPG',
-      '/backgrounds/IMG_3649.JPG',
-      '/backgrounds/IMG_3650.JPG',
-      '/backgrounds/IMG_3651.JPG',
-      '/backgrounds/IMG_3741.JPG',
-      '/backgrounds/IMG_3777.JPG',
-      '/backgrounds/IMG_3814.JPG',
-      '/backgrounds/IMG_3816.JPG',
-      '/backgrounds/IMG_5623.JPG',
-      '/backgrounds/IMG_5652.JPG',
-      '/backgrounds/IMG_5759.JPG',
-      '/backgrounds/46857974-B508-45F5-9B1D-74AF02FFBB5C.png',
-    ]
-
-    // Check which images exist
-    const checkImages = async () => {
-      const validImages: string[] = []
-
-      for (const photoPath of allPhotos) {
-        const img = new Image()
-        await new Promise<void>((resolve) => {
-          img.onload = () => {
-            validImages.push(photoPath)
-            resolve()
-          }
-          img.onerror = () => {
-            resolve() // Skip invalid images
-          }
-          img.src = photoPath
-        })
-      }
-
-      setImages(validImages)
-    }
-
-    checkImages()
-  }, [])
-
-  return images
+  return allPhotos
 }
 
