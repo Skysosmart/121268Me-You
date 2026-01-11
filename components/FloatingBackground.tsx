@@ -53,8 +53,8 @@ export default function FloatingBackground({
       // Random duration (6s to 10s)
       const duration = 6 + Math.random() * 4
       
-      // Random opacity (0.35 to 0.6)
-      const opacity = 0.35 + Math.random() * 0.25
+      // Random opacity (0.5 to 0.75) - more visible
+      const opacity = 0.5 + Math.random() * 0.25
       
       return {
         id: `floating-${index}-${src}`,
@@ -96,28 +96,27 @@ export default function FloatingBackground({
 
   return (
     <div
-      className="fixed inset-0 z-0 pointer-events-none overflow-hidden"
+      className="fixed inset-0 pointer-events-none overflow-hidden"
       aria-hidden="true"
       style={{ 
-        isolation: 'isolate',
         zIndex: -1,
       }}
     >
-      {/* Base gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-100/50 via-sky-blue-50/40 to-romantic-pink-50/50" />
+      {/* Base gradient background - very light */}
+      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-100/30 via-sky-blue-50/20 to-romantic-pink-50/30" />
       
-      {/* Floating images container */}
-      <div className="absolute inset-0">
+      {/* Floating images container - images should be visible */}
+      <div className="absolute inset-0" style={{ zIndex: 1 }}>
         {floatingImages.map((image) => (
           <FloatingImageItem key={image.id} image={image} />
         ))}
       </div>
       
-      {/* Light blur overlay for dreamy effect */}
-      <div className="absolute inset-0 backdrop-blur-[3px] opacity-60" />
+      {/* Very light blur overlay - not too strong */}
+      <div className="absolute inset-0 backdrop-blur-[2px] opacity-30" style={{ zIndex: 2 }} />
       
-      {/* Gradient overlay - soft pink to sky blue */}
-      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-200/25 via-sky-blue-100/15 to-romantic-pink-100/25" />
+      {/* Very light gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-200/10 via-sky-blue-100/5 to-romantic-pink-100/10" style={{ zIndex: 3 }} />
     </div>
   )
 }

@@ -6,6 +6,7 @@ import HeroSection from '@/components/HeroSection'
 import StorySection from '@/components/StorySection'
 import GallerySection from '@/components/GallerySection'
 import AnimatedPhotoGallery from '@/components/AnimatedPhotoGallery'
+import SwipeablePhotoGallery from '@/components/SwipeablePhotoGallery'
 import MessageSection from '@/components/MessageSection'
 import CountdownSection from '@/components/CountdownSection'
 import FinalLovePage from '@/components/FinalLovePage'
@@ -64,7 +65,7 @@ export default function Home() {
             <SnowEffect />
             <HeroSection />
             <StorySection />
-            <AnimatedPhotoGallery />
+            <SwipeablePhotoGallery />
             <MessageSection />
             <CountdownSection />
             <FinalLovePage />
