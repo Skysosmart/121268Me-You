@@ -53,7 +53,7 @@ export default function CountdownSection() {
   )
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20 bg-gradient-romantic">
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20" style={{ background: 'transparent' }}>
       <motion.div
         className="w-full max-w-4xl"
         initial={{ opacity: 0, y: 50 }}

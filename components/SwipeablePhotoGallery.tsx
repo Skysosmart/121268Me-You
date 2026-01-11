@@ -48,7 +48,7 @@ export default function SwipeablePhotoGallery() {
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20 bg-gradient-romantic relative overflow-hidden">
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden" style={{ background: 'transparent' }}>
       <motion.div
         className="w-full max-w-6xl"
         initial={{ opacity: 0, y: 50 }}

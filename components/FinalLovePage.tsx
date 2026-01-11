@@ -40,7 +40,7 @@ export default function FinalLovePage() {
   }
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden bg-gradient-romantic">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden" style={{ background: 'transparent' }}>
       {/* Floating hearts background */}
       <div className="absolute inset-0 overflow-hidden">
         {hearts.map((heart, i) => (

@@ -66,7 +66,8 @@ export default function HeroSection() {
 
   return (
     <section 
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden bg-gradient-romantic"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden"
+      style={{ background: 'transparent' }}
     >
       {/* Background removed - using FloatingBackground component instead */}
       {/* Animated background elements */}

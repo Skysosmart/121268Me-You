@@ -31,7 +31,7 @@ export default function MessageSection() {
   }, [isTyping])
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-sky">
+    <section className="min-h-screen flex items-center justify-center px-4 py-20" style={{ background: 'transparent' }}>
       <motion.div
         className="max-w-2xl w-full"
         initial={{ opacity: 0, scale: 0.9 }}
