@@ -194,7 +194,7 @@ function FloatingImageItem({ image }: { image: FloatingImage }) {
 
 // Hook to get background images from the backgrounds folder
 export function useFloatingBackgroundImages() {
-  // Return images directly - no async check needed
+  // Return images directly - only JPG/PNG (exclude HEIC which can cause build issues)
   const allPhotos = [
     '/backgrounds/IMG_3285.JPG',
     '/backgrounds/IMG_3287.JPG',
@@ -226,6 +226,7 @@ export function useFloatingBackgroundImages() {
     '/backgrounds/IMG_5652.JPG',
     '/backgrounds/IMG_5759.JPG',
     '/backgrounds/46857974-B508-45F5-9B1D-74AF02FFBB5C.png',
+    // Excluded HEIC files: IMG_3029.HEIC, IMG_3481.HEIC (can cause build crashes)
   ]
 
   return allPhotos

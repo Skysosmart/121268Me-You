@@ -1,0 +1,5 @@
+# Ignore large image files during build
+public/backgrounds/*.HEIC
+public/backgrounds/README.md
+public/backgrounds/.gitkeep
+
