@@ -22,18 +22,8 @@ import FloatingBackground, { useFloatingBackgroundImages } from '@/components/Fl
 const TARGET_DATE = new Date('2026-01-12T00:00:00') // 12 January 2026
 
 export default function Home() {
-  const [showFullScreenCountdown, setShowFullScreenCountdown] = useState(false)
-  const backgroundImage = useBackgroundPhoto()
+  const [showFullScreenCountdown, setShowFullScreenCountdown] = useState(true)
   const floatingImages = useFloatingBackgroundImages()
-
-  useEffect(() => {
-    // Check if we're before the target date
-    const now = new Date()
-    const isBeforeDate = now < TARGET_DATE
-    
-    // Show full-screen countdown if before the date
-    setShowFullScreenCountdown(isBeforeDate)
-  }, [])
 
   const handleCountdownComplete = () => {
     setShowFullScreenCountdown(false)
@@ -42,11 +32,10 @@ export default function Home() {
   return (
     <PasswordProtection>
       <main className="relative">
-        {/* Full-screen countdown - shows before the anniversary date */}
+        {/* Full-screen countdown - shows first, always */}
         {showFullScreenCountdown && (
           <FullScreenCountdown 
             onCountdownComplete={handleCountdownComplete}
-            backgroundImage={backgroundImage || undefined}
           />
         )}
 

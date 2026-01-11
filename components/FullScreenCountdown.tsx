@@ -8,10 +8,9 @@ const targetDate = new Date('2026-01-12T00:00:00') // 12 January 2026
 
 interface FullScreenCountdownProps {
   onCountdownComplete?: () => void
-  backgroundImage?: string
 }
 
-export default function FullScreenCountdown({ onCountdownComplete, backgroundImage }: FullScreenCountdownProps) {
+export default function FullScreenCountdown({ onCountdownComplete }: FullScreenCountdownProps) {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -55,15 +54,9 @@ export default function FullScreenCountdown({ onCountdownComplete, backgroundIma
   return (
     <div 
       className="fixed inset-0 z-[9998] flex items-center justify-center bg-gradient-romantic"
-      style={{
-        backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
     >
       {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]" />
       
       <motion.div
         className="relative z-10 text-center px-4 w-full max-w-6xl"
