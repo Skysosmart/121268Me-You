@@ -67,7 +67,7 @@ export default function SwipeablePhotoGallery() {
         </motion.h2>
 
         <motion.p
-          className="text-center text-gray-600 mb-12 text-lg"
+          className="text-center text-gray-300 mb-12 text-lg"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -165,7 +165,7 @@ export default function SwipeablePhotoGallery() {
         </div>
 
         <motion.div
-          className="mt-8 text-center text-gray-600"
+          className="mt-8 text-center text-gray-300"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

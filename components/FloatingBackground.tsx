@@ -102,8 +102,8 @@ export default function FloatingBackground({
         zIndex: -1,
       }}
     >
-      {/* Base gradient background - very light */}
-      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-100/20 via-sky-blue-50/10 to-romantic-pink-50/20" />
+      {/* Dark base background for aesthetic look */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900/30 to-pink-900/20" />
       
       {/* Floating images container - images should be visible and on top */}
       <div className="absolute inset-0" style={{ zIndex: 10 }}>
@@ -112,11 +112,17 @@ export default function FloatingBackground({
         ))}
       </div>
       
-      {/* Very light blur overlay - behind images */}
-      <div className="absolute inset-0 backdrop-blur-[1px] opacity-20" style={{ zIndex: 5 }} />
+      {/* Dark overlay for depth */}
+      <div className="absolute inset-0 bg-black/40" style={{ zIndex: 7 }} />
       
-      {/* Very light gradient overlay - behind images */}
-      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-200/5 via-sky-blue-100/3 to-romantic-pink-100/5" style={{ zIndex: 6 }} />
+      {/* Soft blur overlay */}
+      <div className="absolute inset-0 backdrop-blur-[2px] opacity-60" style={{ zIndex: 8 }} />
+      
+      {/* Romantic gradient overlay - darker and more aesthetic */}
+      <div className="absolute inset-0 bg-gradient-to-br from-romantic-pink-900/20 via-purple-900/15 to-sky-blue-900/20" style={{ zIndex: 9 }} />
+      
+      {/* Soft pink-blue glow overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-romantic-pink-800/10 via-transparent to-sky-blue-800/10" style={{ zIndex: 10 }} />
     </div>
   )
 }

@@ -64,7 +64,7 @@ export default function MessageSection() {
           </motion.h2>
 
           <motion.div
-            className="text-lg md:text-xl text-gray-700 leading-relaxed whitespace-pre-line"
+            className="text-lg md:text-xl text-gray-200 leading-relaxed whitespace-pre-line"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}

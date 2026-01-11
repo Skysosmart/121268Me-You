@@ -100,7 +100,7 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="text-xl md:text-2xl text-gray-700 mb-6"
+          className="text-xl md:text-2xl text-gray-300 mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 1 }}
@@ -109,7 +109,7 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.p
-          className="text-lg md:text-xl text-romantic-pink-500 italic"
+          className="text-lg md:text-xl text-romantic-pink-300 italic"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1, duration: 1 }}

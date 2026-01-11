@@ -85,7 +85,7 @@ export default function PasswordProtection({ children }: PasswordProtectionProps
             <h2 className="text-3xl md:text-4xl font-bold text-romantic-pink-600 mb-2 text-glow">
               Welcome to Our Anniversary
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-300">
               Please enter the password to continue
             </p>
           </motion.div>
@@ -160,7 +160,7 @@ export default function PasswordProtection({ children }: PasswordProtectionProps
           </form>
 
           <motion.div
-            className="mt-6 text-center text-sm text-gray-500"
+            className="mt-6 text-center text-sm text-gray-400"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}

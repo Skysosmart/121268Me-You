@@ -46,7 +46,7 @@ export default function CountdownSection() {
       >
         {value.toString().padStart(2, '0')}
       </motion.div>
-      <div className="text-sm md:text-base text-gray-600 uppercase tracking-wider">
+      <div className="text-sm md:text-base text-gray-300 uppercase tracking-wider">
         {label}
       </div>
     </motion.div>

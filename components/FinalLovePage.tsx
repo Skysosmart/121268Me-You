@@ -86,7 +86,7 @@ export default function FinalLovePage() {
         </motion.div>
 
         <motion.div
-          className="mt-16 text-gray-600 text-sm md:text-base"
+          className="mt-16 text-gray-400 text-sm md:text-base"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
