@@ -39,11 +39,12 @@ export default function MusicPlayer() {
         preload="auto"
         muted={!isPlaying}
       >
-        {/* Replace with your own romantic lofi music file */}
-        {/* Option 1: Use a public file - place music.mp3 in /public folder and use: */}
-        {/* <source src="/music.mp3" type="audio/mpeg" /> */}
-        {/* Option 2: Use an external URL */}
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+        {/* Love Story - Taylor Swift (Lo-fi) */}
+        {/* Place your "love-story-lofi.mp3" file in the /public folder */}
+        <source src="/love-story-lofi.mp3" type="audio/mpeg" />
+        {/* Fallback: If you have the file with a different name, update the path above */}
+        {/* Alternative: Use an external URL if hosting elsewhere */}
+        {/* <source src="https://your-cdn.com/love-story-lofi.mp3" type="audio/mpeg" /> */}
       </audio>
 
       <AnimatePresence>
