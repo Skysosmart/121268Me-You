@@ -5,9 +5,9 @@ import { useState, useEffect } from 'react'
 
 const message = `To my Kaning...
 
-Thank you for coming into my life and making every day brighter. Your smile is like the morning sky, and your love is as pure as ice crystals.
+ขอบคุณที่มาสู่ชีวิตของฉัน และทำให้แต่ละวันมีความสุขขึ้น ความรักของคุณคือความสะอาดมากเหมือนกับน้ำแข็ง
 
-I'm grateful for every moment we share together. Happy 1 month anniversary, my love! 💕`
+เค้ามีความสุขมากๆเวลาอยู่กับเธอ ขอให้เธออยู่กับเค้าตลอดไปนะ  Happy 1 month anniversary, my love! 💕`
 
 export default function MessageSection() {
   const [displayedText, setDisplayedText] = useState('')
