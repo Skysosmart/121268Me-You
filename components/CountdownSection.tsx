@@ -33,7 +33,7 @@ export default function CountdownSection() {
 
   const CountdownBox = ({ value, label }: { value: number; label: string }) => (
     <motion.div
-      className="glassmorphism rounded-2xl p-6 md:p-8 text-center shadow-xl"
+      className="glassmorphism rounded-2xl p-6 md:p-8 text-center shadow-xl romantic-glow border border-romantic-pink-200/50"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3 }}
     >

@@ -93,11 +93,11 @@ export default function PasswordProtection({ children }: PasswordProtectionProps
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Password Display */}
             <div className="mb-6">
-              <div className="flex justify-center gap-2 mb-4">
+              <div className="flex justify-center gap-1.5 mb-4">
                 {[0, 1, 2, 3, 4, 5].map((index) => (
                   <motion.div
                     key={index}
-                    className={`w-12 h-12 md:w-14 md:h-14 rounded-xl border-2 flex items-center justify-center text-xl font-bold transition-all ${
+                    className={`w-10 h-10 md:w-12 md:h-12 rounded-lg border-2 flex items-center justify-center text-lg font-bold transition-all ${
                       index < password.length
                         ? 'bg-gradient-romantic border-romantic-pink-500 text-white shadow-lg'
                         : 'bg-white/50 border-romantic-pink-200 text-romantic-pink-300'

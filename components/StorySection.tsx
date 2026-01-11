@@ -12,7 +12,7 @@ export default function StorySection() {
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <div className="glassmorphism rounded-3xl p-8 md:p-12 shadow-2xl">
+        <div className="glassmorphism rounded-3xl p-8 md:p-12 shadow-2xl romantic-glow border-2 border-romantic-pink-200/50">
           <motion.div
             className="text-center mb-8"
             initial={{ opacity: 0, scale: 0.9 }}

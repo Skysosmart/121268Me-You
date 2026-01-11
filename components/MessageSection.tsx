@@ -40,7 +40,7 @@ export default function MessageSection() {
         transition={{ duration: 0.8 }}
       >
         <motion.div
-          className="glassmorphism rounded-3xl p-8 md:p-12 shadow-2xl border-2 border-romantic-pink-300 relative overflow-hidden"
+          className="glassmorphism rounded-3xl p-8 md:p-12 shadow-2xl border-2 border-romantic-pink-300 relative overflow-hidden romantic-glow"
           animate={{
             boxShadow: [
               '0 0 20px rgba(236, 72, 153, 0.3)',

@@ -56,7 +56,7 @@ export default function FinalLovePage() {
         transition={{ duration: 1, ease: 'easeOut' }}
       >
         <motion.h1
-          className="text-4xl md:text-6xl font-bold text-romantic-pink-600 mb-8 text-glow"
+          className="text-4xl md:text-6xl font-bold text-romantic-pink-600 mb-8 romantic-text-glow"
           animate={{ 
             scale: [1, 1.1, 1],
           }}
